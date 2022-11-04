@@ -1,5 +1,6 @@
 package com.eviro.assessment.grad001.raisibeserakalala.service;
 
+import com.eviro.assessment.grad001.raisibeserakalala.model.UserAccount;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -55,6 +56,14 @@ public class FileParserImpl implements FileParser {
 
     }
 
+
+
+
+
+
+
+    
+
     @Override
     public File convertCSVDataToImage(String base64ImageData) {
         byte[] data = DatatypeConverter.parseBase64Binary(base64ImageData);
@@ -73,10 +82,17 @@ public class FileParserImpl implements FileParser {
 
     @Override
     public URI createImageLink(File fileImage) {
+        try {
+            fileImage = new File("C:\\path\\to\\test.txt");
+            System.out.println(fileImage.toURI());
+        } catch (Exception exception) {
+            System.out.println("exception");
+        }
 
-        URI uri = fileImage.toURI();
-        System.out.println(uri);
+        UserAccount link = new UserAccount();
 
-        return uri;
+        // I want to somehow get the imagine link here to the model side link.getImagelink();
+
+        return fileImage.toURI();
     }
 }
