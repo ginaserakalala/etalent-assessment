@@ -5,13 +5,14 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
+import jakarta.xml.bind.DatatypeConverter;
+
 
 public class FileParserImpl implements FileParser {
     public static HashMap <String,String[]> rows = new HashMap<>();
@@ -56,9 +57,20 @@ public class FileParserImpl implements FileParser {
 
     @Override
     public File convertCSVDataToImage(String base64ImageData) {
-        byte[] decodedBytes = Base64.getDecoder().decode(base64ImageData);
-        String decodedString = new String(decodedBytes);
-        File file = new File("./test");
+        byte[] data = DatatypeConverter.parseBase64Binary(base64ImageData);
+        String pathname;
+        pathname = "C:/Pictures" + "img.png";
+        File file = new File(pathname);
+        try(OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))){
+            outputStream.write(data);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+
 
         return file;
     }
