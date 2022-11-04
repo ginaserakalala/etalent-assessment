@@ -68,10 +68,6 @@ public class FileParserImpl implements FileParser {
             e.printStackTrace();
         }
 
-
-
-
-
         return file;
     }
 
