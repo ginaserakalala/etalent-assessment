@@ -25,7 +25,8 @@ public class ImageController {
     @GetMapping(value = "/{name}/{surname}/{filename:[a-zA-Z]+.[a-zA-Z]+}")
     public FileSystemResource gethttpImageLink(@PathVariable String name, @PathVariable String surname, @PathVariable String filename) {
 
-        String[] data = FileParserImpl.rows.get(name.toLowerCase() + " " + surname.toLowerCase());
+       
+        data = FileParserImpl.rows.get(name.toLowerCase() + " " + surname.toLowerCase());
         File convertedfile = fpi.convertCSVDataToImage(data[1]);
         String ext = data[0].split("/")[1];
         File target = new File("./" + filename + "." + ext);
