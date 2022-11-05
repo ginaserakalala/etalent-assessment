@@ -19,13 +19,13 @@ public class UserAccount {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="Account_NAME")
+    @Column(name="Account_holder_name")
     private String name;
 
-    @Column(name="Account_Surname")
+    @Column(name="Account_holder_surname")
     private String surname;
 
-    @Column(name="Image")
+    @Column(name="httpImageLink")
     private String imagelink;
 
     public Long getId() {
@@ -58,5 +58,18 @@ public class UserAccount {
 
     public void setImagelink(String imagelink) {
         this.imagelink = imagelink;
+    }
+
+    public UserAccount() {
+
+    }
+    public UserAccount(String name, String surname, String imagelink) {
+        this.name = name;
+        this.surname = surname;
+        this.imagelink = imagelink;
+    }
+    @Override
+    public String toString() {
+        return "Account Profile [id=" + id + ", name=" + name + ", surname=" + surname + ", http image link=" + imagelink + "]";
     }
 }

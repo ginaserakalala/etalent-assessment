@@ -1,5 +1,6 @@
 package com.eviro.assessment.grad001.raisibeserakalala.controller;
 
+import com.eviro.assessment.grad001.raisibeserakalala.repository.UserAccountRepository;
 import com.eviro.assessment.grad001.raisibeserakalala.service.FileParser;
 import com.eviro.assessment.grad001.raisibeserakalala.service.FileParserImpl;
 import com.eviro.assessment.grad001.raisibeserakalala.model.UserAccount;
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.io.File;
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/v1/api/image")
 
 public class ImageController {
+
+    @Autowired
+    UserAccountRepository userRepository;
 
 
     FileParserImpl fpi = new FileParserImpl();
@@ -30,6 +35,7 @@ public class ImageController {
     @GetMapping(value = "/{name}/{surname}/{filename:[a-zA-Z]+.[a-zA-Z]+}")
     public FileSystemResource gethttpImageLink(@PathVariable String name, @PathVariable String surname, @PathVariable String filename) {
 
+//        List<UserAccount> userAccounts = userRepository.gethttpImageLink("true");
 
         String[] data = FileParserImpl.rows.get(name.toLowerCase() + " " + surname.toLowerCase());
         File convertedfile = fpi.convertCSVDataToImage(data[1]);
