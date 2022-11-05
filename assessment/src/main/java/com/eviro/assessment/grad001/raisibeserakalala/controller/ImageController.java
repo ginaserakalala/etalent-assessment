@@ -1,18 +1,14 @@
 package com.eviro.assessment.grad001.raisibeserakalala.controller;
 
 import com.eviro.assessment.grad001.raisibeserakalala.repository.UserAccountRepository;
-import com.eviro.assessment.grad001.raisibeserakalala.service.FileParser;
 import com.eviro.assessment.grad001.raisibeserakalala.service.FileParserImpl;
-import com.eviro.assessment.grad001.raisibeserakalala.model.UserAccount;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
-import java.util.List;
 
 
 @RestController
@@ -20,7 +16,6 @@ import java.util.List;
 
 public class ImageController {
 
-    @Autowired
     UserAccountRepository userRepository;
 
 
@@ -35,15 +30,14 @@ public class ImageController {
     @GetMapping(value = "/{name}/{surname}/{filename:[a-zA-Z]+.[a-zA-Z]+}")
     public FileSystemResource gethttpImageLink(@PathVariable String name, @PathVariable String surname, @PathVariable String filename) {
 
-//        List<UserAccount> userAccounts = userRepository.gethttpImageLink("true");
+    //List<UserAccount> userAccounts = userRepository.gethttpImageLink("true");
 
         String[] data = FileParserImpl.rows.get(name.toLowerCase() + " " + surname.toLowerCase());
         File convertedfile = fpi.convertCSVDataToImage(data[1]);
         String ext = data[0].split("/")[1];
         File target = new File("./" + filename + "." + ext);
 
-        //File createdImageLink = fpi.createImageLink();
-
+        userRepository.gethttpImageLink("data");
         return new FileSystemResource("C:/Downloads/etalent_assessment/1664806858150-GraduateDev_AssessmentCsv_v2.csv");
 
 
