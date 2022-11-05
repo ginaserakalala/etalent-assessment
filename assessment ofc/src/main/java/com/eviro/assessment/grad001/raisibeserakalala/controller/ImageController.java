@@ -1,5 +1,6 @@
 package com.eviro.assessment.grad001.raisibeserakalala.controller;
 
+import com.eviro.assessment.grad001.raisibeserakalala.model.UserAccount;
 import com.eviro.assessment.grad001.raisibeserakalala.repository.UserAccountRepository;
 import com.eviro.assessment.grad001.raisibeserakalala.service.FileParserImpl;
 import org.springframework.core.io.FileSystemResource;
@@ -26,7 +27,7 @@ public class ImageController {
     public FileSystemResource gethttpImageLink(@PathVariable String name, @PathVariable String surname, @PathVariable String filename) {
 
 
-        String []data = FileParserImpl.rows.get(name.toLowerCase() + " " + surname.toLowerCase());
+        String[] data = FileParserImpl.rows.get(name.toLowerCase() + " " + surname.toLowerCase());
         File convertedfile = fpi.convertCSVDataToImage(data[1]);
         String ext = data[0].split("/")[1];
         File target = new File("./" + filename + "." + ext);
