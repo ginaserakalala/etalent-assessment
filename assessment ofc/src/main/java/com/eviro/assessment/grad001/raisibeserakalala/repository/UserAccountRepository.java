@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 
 public interface UserAccountRepository extends JpaRepository<UserAccount,Long> {
-    //List<UserAccount> gethttpImageLink(String imagelink);
 
 }
