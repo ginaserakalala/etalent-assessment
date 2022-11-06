@@ -38,9 +38,6 @@ public class FileParserImpl implements FileParser {
                 if(i == 0)
                     continue;
 
-//                for (String cell : row) {
-//                    System.out.print(cell + "\t");
-//                }
 
                 String[] data = allData.get(i);
                 String fullname = data[0].toLowerCase() + " "  + data[1].toLowerCase() ;
