@@ -64,17 +64,6 @@ public class FileParserImpl implements FileParser {
 
     @Override
     public File convertCSVDataToImage(String base64ImageData) {
-//        byte[] data = DatatypeConverter.parseBase64Binary(base64ImageData);
-//        String pathname;
-//        pathname = "artemis.png";
-//        File file = new File(pathname);
-//        try(OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))){
-//            outputStream.write(data);
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//        }
-
 
         String[] strings = base64ImageData.split(",");
         String extension;

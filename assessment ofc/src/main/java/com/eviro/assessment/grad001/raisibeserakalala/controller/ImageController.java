@@ -32,6 +32,8 @@ public class ImageController {
         String ext = data[0].split("/")[1];
         File target = new File("./" + filename + "." + ext);
 
+        
+
 
         return new FileSystemResource(target);
 
