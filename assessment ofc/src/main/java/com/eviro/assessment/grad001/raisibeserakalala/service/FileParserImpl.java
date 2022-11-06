@@ -64,14 +64,40 @@ public class FileParserImpl implements FileParser {
 
     @Override
     public File convertCSVDataToImage(String base64ImageData) {
-        byte[] data = DatatypeConverter.parseBase64Binary(base64ImageData);
-        String pathname;
-        pathname = "C:/Pictures" + "img.png";
-        File file = new File(pathname);
-        try(OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))){
-            outputStream.write(data);
+//        byte[] data = DatatypeConverter.parseBase64Binary(base64ImageData);
+//        String pathname;
+//        pathname = "artemis.png";
+//        File file = new File(pathname);
+//        try(OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))){
+//            outputStream.write(data);
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
+
+
+        String[] strings = base64ImageData.split(",");
+        String extension;
+        switch (strings[0]) {
+            case "data:image/jpeg;base64":
+                extension = "jpeg";
+                break;
+            case "data:image/png;base64":
+                extension = "png";
+                break;
+            default://should write cases for more images types
+                extension = "jpg";
+                break;
         }
-        catch (Exception e){
+        //convert base64 string to binary data
+        byte[] data = DatatypeConverter.parseBase64Binary(strings[1]);
+        //String path = "C:\\Users\\Ene\\Desktop\\test_image." + extension;
+        String path = "artemis." + extension;
+
+        File file = new File(path);
+        try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))) {
+            outputStream.write(data);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -89,7 +115,6 @@ public class FileParserImpl implements FileParser {
 
         UserAccount link = new UserAccount();
 
-        // I want to somehow get the imagine link here to the model side link.getImagelink();
 
         return fileImage.toURI();
     }
