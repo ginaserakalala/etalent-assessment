@@ -107,13 +107,12 @@ public class FileParserImpl implements FileParser {
     @Override
     public URI createImageLink(File fileImage) {
         try {
-            fileImage = new File("C:\\path\\to\\test.txt");
-            System.out.println(fileImage.toURI());
+            fileImage = new File("artemis.jpeg");
+            fileImage.toURI();
         } catch (Exception exception) {
             System.out.println("exception");
         }
 
-        UserAccount link = new UserAccount();
 
 
         return fileImage.toURI();
