@@ -32,8 +32,9 @@ public class ImageController {
         String ext = data[0].split("/")[1];
         File target = new File("./" + filename + "." + ext);
 
-        return new FileSystemResource("/Users/ginaserakalala/Downloads/etalent_assessment/1664806858150-GraduateDev_AssessmentCsv_v2.csv");
+        return new FileSystemResource("");
 
 
     }
+
 }
