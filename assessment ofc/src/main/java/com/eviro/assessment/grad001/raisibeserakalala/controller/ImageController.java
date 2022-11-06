@@ -31,11 +31,10 @@ public class ImageController {
         File convertedfile = fpi.convertCSVDataToImage(data[1]);
         String ext = data[0].split("/")[1];
         File target = new File("./" + filename + "." + ext);
-
         
+        fpi.createImageLink(target);
 
-
-        return new FileSystemResource(target);
+        return new FileSystemResource(String.valueOf(fpi.createImageLink(target)));
 
 
     }
